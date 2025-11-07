@@ -1,0 +1,20 @@
+[project]
+name = "my-fastapi-app"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "BEN",email = "ben.ibach@gmx.de"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi (>=0.121.0,<0.122.0)",
+    "uvicorn (>=0.38.0,<0.39.0)"
+]
+
+[tool.poetry]
+packages = [{include = "my_fastapi_app", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
