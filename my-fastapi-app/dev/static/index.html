@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Item</title>
+  </head>
+
+  <body>
+    <h2>Add a new date</h2>
+    <form id="itemForm">
+      <input type="text" id="name" placeholder="Date name" required />
+      <button type="submit">Add DateIdea</button>
+    </form>
+
+    <h3>Current Items:</h3>
+    <ul id="itemList"></ul>
+
+    <pre id="output"></pre>
+
+    <script>
+      async function refreshList() {
+        const res = await fetch("/items/all-items");
+        const data = await res.json();
+        const list = document.getElementById("itemList");
+        list.innerHTML = "";
+        data.items.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+
+          const delBtn = document.createElement("button");
+          delBtn.textContent = "🗑️";
+          delBtn.onclick = async () => {
+            await fetch(`/items/delete-item/${item}`, { method: "DELETE" });
+            refreshList();
+          };
+
+          li.appendChild(delBtn);
+          list.appendChild(li);
+        });
+      }
+
+      document.getElementById("itemForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        await fetch("/items/add-item", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name })
+        });
+        document.getElementById("name").value = "";
+        refreshList();
+      });
+
+      refreshList();
+    </script>
+  </body>
+</html>
