@@ -1,59 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dating Ideas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Item</title>
-  </head>
+  <h1 class="title">Dating Ideas</h1>
 
-  <body>
-    <h2>Add a new date</h2>
-    <form id="itemForm">
-      <input type="text" id="name" placeholder="Date name" required />
-      <button type="submit">Add DateIdea</button>
-    </form>
+  <button id="addButton" class="add-btn">+ Add Dating Idea</button>
 
-    <h3>Current Items:</h3>
-    <ul id="itemList"></ul>
+  <div id="formContainer" class="form hidden">
+    <h2>Neue Date-Idee</h2>
 
-    <pre id="output"></pre>
+    <label>Was?</label>
+    <input type="text" id="what" placeholder="z.B. Kaffee trinken" required>
 
-    <script>
-      async function refreshList() {
-        const res = await fetch("/items/all-items");
-        const data = await res.json();
-        const list = document.getElementById("itemList");
-        list.innerHTML = "";
-        data.items.forEach(item => {
-          const li = document.createElement("li");
-          li.textContent = item;
+    <label>Wo?</label>
+    <input type="text" id="where" placeholder="Ort">
 
-          const delBtn = document.createElement("button");
-          delBtn.textContent = "🗑️";
-          delBtn.onclick = async () => {
-            await fetch(`/items/delete-item/${item}`, { method: "DELETE" });
-            refreshList();
-          };
+    <label>Wann?</label>
+    <input type="date" id="when">
 
-          li.appendChild(delBtn);
-          list.appendChild(li);
-        });
-      }
+    <label>Link</label>
+    <input type="url" id="link" placeholder="Füge hier den Link hinzu">
 
-      document.getElementById("itemForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const name = document.getElementById("name").value;
-        await fetch("/items/add-item", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name })
-        });
-        document.getElementById("name").value = "";
-        refreshList();
-      });
+    <button id="saveButton" class="save-btn">Speichern</button>
+  </div>
 
-      refreshList();
-    </script>
-  </body>
+  <h2 class="list-title">Gespeicherte Ideen</h2>
+
+  <table id="ideasTable">
+    <thead>
+      <tr>
+        <th style="display:none;">ID</th>
+        <th>Was</th>
+        <th>Wo</th>
+        <th>Wann</th>
+        <th>Link</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
 </html>
