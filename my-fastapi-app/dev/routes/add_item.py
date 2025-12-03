@@ -52,6 +52,14 @@ async def create_item(entry: EntryIn):
     save_data(items)
     return {"message": "Item added", "items": sort_items(items)}
 
+@router.get("/get-item/{item_id}")
+async def get_item(item_id: str):
+    items = load_data()
+    for it in items:
+        if it.get("id") == item_id:
+            return it
+    raise HTTPException(status_code=404, detail="Item not found")
+
 @router.get("/all-items")
 async def get_items():
     items = load_data()
@@ -65,3 +73,20 @@ async def delete_item(item_id: str):
         raise HTTPException(status_code=404, detail="Item not found")
     save_data(new)
     return {"message": "Item deleted", "items": sort_items(new)}
+
+@router.put("/update-item/{item_id}")
+async def update_item(item_id: str, entry: EntryIn):
+    items = load_data()
+    found = False
+    for it in items:
+        if it.get("id") == item_id:
+            it["what"] = entry.what or ""
+            it["where"] = entry.where or ""
+            it["when"] = entry.when.isoformat() if entry.when else None
+            it["link"] = entry.link or ""
+            found = True
+            break
+    if not found:
+        raise HTTPException(status_code=404, detail="Item not found")
+    save_data(items)
+    return {"message": "Item updated", "items": sort_items(items)}

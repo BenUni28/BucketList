@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dating Ideas</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <h1 class="title">Dating Ideas</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dating Ideas</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-  <button id="addButton" class="add-btn">+ Add Dating Idea</button>
+  <body>
+    <h1 class="title">Dating Ideas</h1>
 
-  <div id="formContainer" class="form hidden">
-    <h2>Neue Date-Idee</h2>
+    <button id="addButton" class="add-btn">+ Add Dating Idea</button>
 
-    <label>Was?</label>
-    <input type="text" id="what" placeholder="z.B. Kaffee trinken" required>
+    <div id="formContainer" class="form hidden">
+      <h2>Neue Date-Idee</h2>
 
-    <label>Wo?</label>
-    <input type="text" id="where" placeholder="Ort">
+      <label>Was?</label>
+      <input type="text" id="what" placeholder="z.B. Kaffee trinken" required>
 
-    <label>Wann?</label>
-    <input type="date" id="when">
+      <label>Wo?</label>
+      <input type="text" id="where" placeholder="Ort">
 
-    <label>Link</label>
-    <input type="url" id="link" placeholder="Füge hier den Link hinzu">
+      <label>Wann?</label>
+      <input type="date" id="when">
 
-    <button id="saveButton" class="save-btn">Speichern</button>
-  </div>
+      <label>Link</label>
+      <input type="url" id="link" placeholder="Füge hier den Link hinzu">
 
-  <h2 class="list-title">Gespeicherte Ideen</h2>
+      <button id="saveButton" class="save-btn">Speichern</button>
+    </div>
 
-  <table id="ideasTable">
-    <thead>
-      <tr>
-        <th style="display:none;">ID</th>
-        <th>Was</th>
-        <th>Wo</th>
-        <th>Wann</th>
-        <th>Link</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+    <h2 class="list-title">Gespeicherte Ideen</h2>
 
-  <script src="script.js"></script>
-</body>
+    <table id="ideasTable">
+      <thead>
+        <tr>
+          <th style="display:none;">ID</th>
+          <th>Was</th>
+          <th>Wo</th>
+          <th>Wann</th>
+          <th>Link</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="script.js"></script>
+  </body>
+
 </html>

@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "511326e0-dc3a-4230-b41a-93e326b47f1e",
+    "what": "Date Night - essen gehen",
+    "where": "L´osteria",
+    "when": "2026-02-06",
+    "link": "",
+    "created_at": "2025-12-02T08:23:40.604125Z"
+  },
+  {
+    "id": "48eab59b-96d6-4333-8b72-7be3b543fd41",
+    "what": "Koreanisch essen gehen",
+    "where": "Karlsruhe",
+    "when": "2026-02-03",
+    "link": "https://soban-karlsruhe.com/",
+    "created_at": "2025-12-02T08:24:35.330315Z"
+  },
+  {
+    "id": "18fc9446-d46a-4234-a863-48296125bb28",
+    "what": "1 Year Date",
+    "where": "Karlsruhe",
+    "when": "2026-03-27",
+    "link": "",
+    "created_at": "2025-12-02T08:25:11.389742Z"
+  }
+]
