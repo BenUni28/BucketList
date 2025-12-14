@@ -6,8 +6,8 @@
 
 # Curretn Problems:
 
-- Delete Button does not work
-- Der Eintrag lässt sich nicht speicher wenn nicht alle 3 Felder (Was, Wo, Wann) ausgefüllt werden, obwohl die letzen zwei optional sind
+- Edit button does not work, I can reach it but the window won´t open
+- Save button destoryed - go back to old commit and see what was different -> good training
 
 # Editing this README
 

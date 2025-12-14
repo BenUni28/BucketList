@@ -82,7 +82,7 @@ saveButton.addEventListener("click", async () => {
     return;
   }
 
-  const body = { what, where, when, link };
+  const body = { what, where, when: when ? when : null, link };
 
   if (currentEditId) {
     const res = await fetch(`/items/update-item/${currentEditId}`, {
@@ -97,6 +97,8 @@ saveButton.addEventListener("click", async () => {
     }
 
     await res.json();
+
+    currentEditId = null;
   }
 
   else {
