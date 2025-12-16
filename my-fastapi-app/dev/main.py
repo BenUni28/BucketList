@@ -1,7 +1,10 @@
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from database import engine
+from models import Base
 from routes import add_item
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
