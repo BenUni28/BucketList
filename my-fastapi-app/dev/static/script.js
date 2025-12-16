@@ -29,10 +29,8 @@ async function loadIdeas() {
       <td>${item.where || ""}</td>
       <td>${item.when || ""}</td>
       <td>${item.link ? `<a href="${item.link}" target="_blank">${item.link}</a>` : ""}</td>
-      <td>
-        <button class="edit-btn" data-id="${item.id}">✏️</button>
-        <button class="delete-btn" data-id="${item.id}">🗑️</button>
-      </td>
+      <td><button class="edit-btn" data-id="${item.id}">✏️</button></td>
+      <td><button class="delete-btn" data-id="${item.id}">🗑️</button></td>
     `;
     tableBody.appendChild(row);
   });
@@ -52,13 +50,13 @@ tableBody.addEventListener("click", (event) => {
 
 async function loadIdeaIntoForm(id) {
   const res = await fetch(`/items/get-item/${id}`);
-  const data = await res.json();
-
-  const item = data.item;
+  const item = await res.json();
 
   document.getElementById("what").value = item.what;
   document.getElementById("where").value = item.where || "";
-  document.getElementById("when").value = item.when || "";
+  document.getElementById("when").value = item.when
+      ? item.when.split("T")[0]
+    : "";
   document.getElementById("link").value = item.link || "";
 
   currentEditId = id;

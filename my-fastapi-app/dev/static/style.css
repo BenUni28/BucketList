@@ -75,7 +75,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Untertitel */
 .list-title {
   margin-top: 40px;
   text-align: center;
@@ -128,6 +127,21 @@ td a:hover {
 
 .delete-btn:hover {
   color: red;
+  transform: scale(1.1);
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  pointer-events: auto !important;
+  z-index: 9999 !important;
+  transition: 0.2s;
+}
+
+.edit-btn:hover {
+  color: #333;
   transform: scale(1.1);
 }
 
